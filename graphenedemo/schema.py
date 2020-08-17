@@ -1,3 +1,5 @@
+import asyncio
+
 import graphene
 
 import demo.gql.query as query

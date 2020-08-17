@@ -11,5 +11,7 @@ class Query(graphene.AbstractType):
     products = filter.DjangoFilterConnectionField(node.ProductNode)
     product  = graphene.relay.Node.Field(node.ProductNode)
 
+    comments = filter.DjangoFilterConnectionField(node.CommentNode)
+
     product_categories  = filter.DjangoFilterConnectionField(node.ProductCategoryNode)
     product_categorie   = graphene.relay.Node.Field(node.ProductCategoryNode)
