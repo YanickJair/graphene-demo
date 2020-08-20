@@ -20,7 +20,7 @@ class Product(models.Model):
         return self.name
     
 class Comment(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     text = models.TextField()
     created_at = models.DateTimeField(default=timezone.now)
@@ -33,6 +33,9 @@ class Favorites(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
     class Meta:
+        """ 
+        Let's make sure one user don't add product to favorites twice by defining a constraint
+        """
         constraints = [
             models.UniqueConstraint(
                 name="unique_favorite_user",

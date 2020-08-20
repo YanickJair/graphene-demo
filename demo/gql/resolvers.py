@@ -57,7 +57,6 @@ class CreateProduct(graphene.relay.ClientIDMutation):
             transaction.rollback()
         return CreateProduct(product=product)
 
-
 """ 
 Two possible actions allowed on manage favorites
 """
@@ -161,4 +160,5 @@ class Comment(graphene.relay.ClientIDMutation):
                 raise Exception("Product Not Found")
         except:
             transaction.rollback()
-        return Comment(commt = comment)
+            raise
+        return Comment(comment = comment)
